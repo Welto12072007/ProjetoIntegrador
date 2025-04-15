@@ -1,0 +1,30 @@
+{
+  "name": "projetointegrador",
+  "version": "1.0.0",
+  "description": "Desenvolver uma aplicação básica para gerenciar tarefas com funcionalidades de criação, edição, exclusão e marcação de tarefas como concluídas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Welto12072007/ProjetoIntegrador.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Welto12072007/ProjetoIntegrador/issues"
+  },
+  "homepage": "https://github.com/Welto12072007/ProjetoIntegrador#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.24.0",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.5.3"
+  }
+}
