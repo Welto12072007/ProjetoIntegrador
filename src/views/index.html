@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,11 +12,14 @@
 
     <form id="taskForm" class="mb-4">
       <div class="row g-2">
-        <div class="col-md-5">
+        <div class="col-md-3">
           <input type="text" class="form-control" id="title" placeholder="Título" required>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-4">
           <input type="text" class="form-control" id="description" placeholder="Descrição" required>
+        </div>
+        <div class="col-md-3">
+          <input type="date" class="form-control" id="date" required>
         </div>
         <div class="col-md-2">
           <button class="btn btn-primary w-100" type="submit">Adicionar</button>
@@ -42,8 +46,10 @@
         li.innerHTML = `
           <span style="${task.done ? 'text-decoration: line-through;' : ''}">
             <strong>${task.title}</strong>: ${task.description}
+            <br><small class="text-muted">Data: ${task.date || 'Sem data'}</small>
           </span>
           <div>
+            <button class="btn btn-secondary btn-sm me-2" onclick="editTask(${task.id})">Editar</button>
             ${!task.done ? `<button class="btn btn-success btn-sm me-2" onclick="markDone(${task.id})">Concluir</button>` : ""}
             <button class="btn btn-danger btn-sm" onclick="deleteTask(${task.id})">Excluir</button>
           </div>
@@ -57,11 +63,12 @@
       e.preventDefault();
       const title = document.getElementById("title").value;
       const description = document.getElementById("description").value;
+      const date = document.getElementById("date").value;
 
       await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, description })
+        body: JSON.stringify({ title, description, date })
       });
 
       document.getElementById("taskForm").reset();
@@ -76,6 +83,21 @@
     async function deleteTask(id) {
       await fetch(`${apiUrl}/${id}`, { method: "DELETE" });
       fetchTasks();
+    }
+
+    async function editTask(id) {
+      const title = prompt("Novo título:");
+      const description = prompt("Nova descrição:");
+      const date = prompt("Nova data (yyyy-mm-dd):");
+
+      if (title && description && date) {
+        await fetch(`${apiUrl}/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title, description, date })
+        });
+        fetchTasks();
+      }
     }
 
     document.getElementById("taskForm").addEventListener("submit", createTask);
