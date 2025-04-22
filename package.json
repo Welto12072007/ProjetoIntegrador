@@ -4,7 +4,11 @@
   "description": "Desenvolver uma aplicação básica para gerenciar tarefas com funcionalidades de criação, edição, exclusão e marcação de tarefas como concluídas.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "lint": "eslint src --ext .js",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -18,12 +22,14 @@
   },
   "homepage": "https://github.com/Welto12072007/ProjetoIntegrador#readme",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "eslint": "^9.24.0",
+    "eslint": "^9.25.1",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3"
   }
