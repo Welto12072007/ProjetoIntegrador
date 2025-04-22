@@ -14,4 +14,3 @@ Uma aplicação para gerenciar tarefas com funcionalidades de criação, ediçã
 3. Instale as dependências com `npm install`.
 4. Execute o servidor com `node server.js`.
 5. Acesse a API em `http://localhost:3000/tasks`.
-6. A
