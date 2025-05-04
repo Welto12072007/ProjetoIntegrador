@@ -44,16 +44,17 @@
         li.className = "list-group-item d-flex justify-content-between align-items-center";
 
         li.innerHTML = `
-          <span style="${task.done ? 'text-decoration: line-through;' : ''}">
-            <strong>${task.title}</strong>: ${task.description}
-            <br><small class="text-muted">Data: ${task.date || 'Sem data'}</small>
-          </span>
-          <div>
-            <button class="btn btn-secondary btn-sm me-2" onclick="editTask(${task.id})">Editar</button>
-            ${!task.done ? `<button class="btn btn-success btn-sm me-2" onclick="markDone(${task.id})">Concluir</button>` : ""}
-            <button class="btn btn-danger btn-sm" onclick="deleteTask(${task.id})">Excluir</button>
-          </div>
-        `;
+            <div class="flex-grow-1 me-3" style="${task.done ? 'text-decoration: line-through;' : ''}; word-break: break-word;">
+              <strong>${task.title}</strong>: ${task.description}
+              <br><small class="text-muted">Data: ${task.date || 'Sem data'}</small>
+            </div>
+            <div class="d-flex flex-shrink-0">
+              <button class="btn btn-secondary btn-sm me-2" onclick="editTask(${task.id})">Editar</button>
+              ${!task.done ? `<button class="btn btn-success btn-sm me-2" onclick="markDone(${task.id})">Concluir</button>` : ""}
+              <button class="btn btn-danger btn-sm" onclick="deleteTask(${task.id})">Excluir</button>
+            </div>
+`;
+
 
         list.appendChild(li);
       });
