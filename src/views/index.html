@@ -181,7 +181,7 @@
       const modal = bootstrap.Modal.getInstance(editModalEl);
       modal.hide();
 
-      await fetchTasks(); // recarrega a lista completa
+      await fetchTasks(); 
     });
 
     document.getElementById("taskForm").addEventListener("submit", createTask);
