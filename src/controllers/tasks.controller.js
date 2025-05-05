@@ -1,4 +1,3 @@
-
 const taskModel = require('../models/model');
 
 exports.getTasks = (req, res) => {
@@ -26,6 +25,10 @@ exports.deleteTask = (req, res) => {
 exports.updateTask = (req, res) => {
   const id = parseInt(req.params.id);
   const { title, description, date } = req.body;
-  taskModel.updateTask(id, { title, description, date });
-  res.status(200).json({ message: "Tarefa atualizada" });
+  const updated = taskModel.updateTask(id, { title, description, date });
+  if (updated) {
+    res.status(200).json(updated);
+  } else {
+    res.status(404).json({ message: "Tarefa não encontrada" });
+  }
 };

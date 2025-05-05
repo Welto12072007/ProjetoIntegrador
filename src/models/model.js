@@ -1,4 +1,3 @@
-
 let tasks = [];
 let currentId = 1;
 
@@ -37,7 +36,9 @@ function updateTask(id, { title, description, date }) {
     task.title = title ?? task.title;
     task.description = description ?? task.description;
     task.date = date ?? task.date;
+    return task;
   }
+  return null;
 }
 
 module.exports = {
